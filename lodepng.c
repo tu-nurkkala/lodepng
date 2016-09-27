@@ -93,34 +93,34 @@ It makes the error handling code shorter and more readable.
 
 Example: if(!uivector_resizev(&frequencies_ll, 286, 0)) ERROR_BREAK(83);
 */
-#define CERROR_BREAK(errorvar, code)\
-{\
-  errorvar = code;\
-  break;\
+#define CERROR_BREAK(errorvar, code)			\
+{												\
+  errorvar = code;								\
+  break;										\
 }
 
 /*version of CERROR_BREAK that assumes the common case where the error variable is named "error"*/
 #define ERROR_BREAK(code) CERROR_BREAK(error, code)
 
 /*Set error var to the error code, and return it.*/
-#define CERROR_RETURN_ERROR(errorvar, code)\
-{\
-  errorvar = code;\
-  return code;\
+#define CERROR_RETURN_ERROR(errorvar, code)		\
+{												\
+  errorvar = code;								\
+  return code;									\
 }
 
 /*Try the code, if it returns error, also return the error.*/
-#define CERROR_TRY_RETURN(call)\
-{\
-  unsigned error = call;\
-  if(error) return error;\
+#define CERROR_TRY_RETURN(call)					\
+{												\
+  unsigned error = call;						\
+  if(error) return error;						\
 }
 
 /*Set error var to the error code, and return from the void function.*/
-#define CERROR_RETURN(errorvar, code)\
-{\
-  errorvar = code;\
-  return;\
+#define CERROR_RETURN(errorvar, code)			\
+{												\
+  errorvar = code;								\
+  return;										\
 }
 
 /*
